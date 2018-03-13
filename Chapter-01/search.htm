@@ -5,6 +5,12 @@
 <title>short forms</title>
 <link href="_css/base.css" rel="stylesheet" type="text/css" media="screen">
 <style>
+
+.search-form {
+  width: 80%;
+  margin: 0 auto;
+}
+
 input[type="search"] {
 	box-sizing: border-box;
 	background: #E9E9E9;
@@ -32,9 +38,55 @@ button[type="submit"] {
 	cursor: pointer;	
 }
 button[type="submit"]:hover {
-	background: #C17CCF;
+	background: #b89fb9;
 }
-/*flex it*/
+
+/* Flex Styles */
+
+.search-form {
+	display: flex;
+	/* if space runs out the items will wrap to the next line */
+	flex-wrap: wrap;
+}
+
+/*
+  This flex property sets the indiviudal elements flexibility
+  In this case, because they are on the same line, it works as a ratio
+  saying that the input will take up 2times as much space as the button
+  They're going to stretch to fill the parent container
+*/
+/* input[type="search"] {
+  flex: 2;
+}
+button[type="submit"] {
+  flex: 1;
+} */
+/* Flex shortand: grow, shrink, basis */
+/*
+  grow: how much bigger should I get than when I started, relative to the other flex items in the container
+  shrink: ^^ how much should it shrink ^^
+  basis: default/initial size - ALMOST like setting a min-width; if you set flex-wrap: wrap then it does act like a min-width
+*/
+input[type="search"] {
+  /* I really want the input to be 250px but if there is room to grow let it grow at a ratio 2times the size of the other item(s) */
+  flex: 2 0 250px;
+}
+button[type="submit"] {
+  /* because the grow property is set, when it wraps to the next line it will take up all the available space, not just 90px */
+  flex: 1 0 90px;
+}
+
+@media (max-width: 450px) {
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 1em 0 2em 0;
+  }
+  header {
+    padding: 2% 5%;
+  }
+}
+
 </style>
 </head>
 <body>
